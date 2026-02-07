@@ -17,6 +17,11 @@ const AGENTS = [
   'wonder.json',
   'gratitude-guide.json',
   'adventurer.json',
+  'unhinged-optimist.json',
+  'shower-thought.json',
+  'hype-beast.json',
+  'dad-joker.json',
+  'conspiracy-buddy.json',
 ];
 
 describe('Agent Configuration', () => {
@@ -59,8 +64,8 @@ describe('Agent Configuration', () => {
     });
   });
 
-  it('should have exactly 10 agents', () => {
-    expect(AGENTS).toHaveLength(10);
+  it('should have exactly 15 agents', () => {
+    expect(AGENTS).toHaveLength(15);
   });
 
   it('should have unique agent names', () => {

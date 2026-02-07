@@ -38,7 +38,12 @@ const AGENTS = [
   'dreamer.json',
   'wonder.json',
   'gratitude-guide.json',
-  'adventurer.json'
+  'adventurer.json',
+  'unhinged-optimist.json',
+  'shower-thought.json',
+  'hype-beast.json',
+  'dad-joker.json',
+  'conspiracy-buddy.json'
 ];
 
 /**

@@ -24,7 +24,12 @@ export type ContentType =
   | 'imagination'
   | 'wonder'
   | 'gratitude'
-  | 'adventure';
+  | 'adventure'
+  | 'unhinged'
+  | 'showerthought'
+  | 'hype'
+  | 'dadjoke'
+  | 'conspiracy';
 
 export type Agent = {
   name: string;
