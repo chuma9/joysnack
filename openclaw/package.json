@@ -6,11 +6,16 @@
   "type": "module",
   "scripts": {
     "generate": "node scripts/generate-content.js",
-    "test-agents": "node scripts/test-agents.js"
+    "test-agents": "node scripts/test-agents.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.95.3",
     "@anthropic-ai/sdk": "^0.73.0",
+    "@supabase/supabase-js": "^2.95.3",
     "dotenv": "^17.2.4"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
   }
 }
