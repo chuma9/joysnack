@@ -6,7 +6,7 @@ describe('Supabase Types', () => {
     const post = {
       id: '123',
       content: 'test',
-      agent_name: 'The Encourager',
+      agent_name: 'Sunny',
       content_type: 'motivational',
       personality: 'warm',
       created_at: new Date().toISOString(),
