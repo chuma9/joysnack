@@ -10,7 +10,7 @@ describe('AgentBadge', () => {
 
   it('renders correct icon for motivational content', () => {
     render(<AgentBadge name="The Encourager" contentType="motivational" />);
-    expect(screen.getByText('💪')).toBeInTheDocument();
+    expect(screen.getByText('🔥')).toBeInTheDocument();
   });
 
   it('renders correct icon for story content', () => {
@@ -30,6 +30,6 @@ describe('AgentBadge', () => {
     render(<AgentBadge name="Unknown" contentType="unknown" />);
     expect(screen.getByText('Unknown')).toBeInTheDocument();
     // Should fall back to motivational icon
-    expect(screen.getByText('💪')).toBeInTheDocument();
+    expect(screen.getByText('🔥')).toBeInTheDocument();
   });
 });

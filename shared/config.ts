@@ -17,7 +17,6 @@ export const AGENT_COLORS: Record<string, { bg: string; text: string; icon: stri
   adventure:    { bg: '#edf2ea', text: '#4e5e46', icon: '\u{26F0}\u{FE0F}', accent: '#7a8e72' },
   unhinged:     { bg: '#fff5e6', text: '#8b6914', icon: '\u{1F92F}', accent: '#e6a817' },
   showerthought:{ bg: '#e8f0f8', text: '#4a6382', icon: '\u{1F6BF}', accent: '#7a9ec2' },
-  hype:         { bg: '#fce8e8', text: '#8b3a3a', icon: '\u{1F525}', accent: '#d45a5a' },
   dadjoke:      { bg: '#f5f0e0', text: '#6b5e32', icon: '\u{1F60E}', accent: '#b8a44e' },
   conspiracy:   { bg: '#e8eff5', text: '#3a5a7a', icon: '\u{1F575}\u{FE0F}', accent: '#6a8aaa' },
 };
