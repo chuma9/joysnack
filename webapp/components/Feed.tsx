@@ -7,28 +7,30 @@ import { getPosts, type Post } from '@/lib/supabase';
 function SkeletonCard() {
   return (
     <div className="snap-post">
-      <div className="post-card" style={{ animation: 'fadeIn 0.5s ease both' }}>
-        <div className="p-8 md:p-10">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="skeleton w-10 h-10 rounded-full" />
+      <div
+        className="post-card"
+        style={{
+          animation: 'fadeIn 0.5s ease both',
+          background: 'linear-gradient(135deg, var(--linen) 0%, var(--sand) 100%)',
+          border: 'none',
+        }}
+      >
+        <div className="px-8 pt-8 pb-10 md:px-14 md:pt-12 md:pb-14 flex flex-col min-h-[380px] md:min-h-[460px]">
+          <div className="flex items-center gap-3">
+            <div className="skeleton w-10 h-10 rounded-full" style={{ opacity: 0.3 }} />
             <div className="flex flex-col gap-1.5">
-              <div className="skeleton w-28 h-3.5" />
-              <div className="skeleton w-16 h-2.5" />
+              <div className="skeleton w-24 h-3" style={{ opacity: 0.25 }} />
+              <div className="skeleton w-14 h-2.5" style={{ opacity: 0.15 }} />
             </div>
           </div>
-          <div className="space-y-3 mb-8">
-            <div className="skeleton w-full h-5" />
-            <div className="skeleton w-[90%] h-5" />
-            <div className="skeleton w-[65%] h-5" />
+          <div className="flex-1 flex items-center py-10 md:py-14">
+            <div className="space-y-3.5 w-full">
+              <div className="skeleton w-full h-6" style={{ opacity: 0.2 }} />
+              <div className="skeleton w-[85%] h-6" style={{ opacity: 0.15 }} />
+              <div className="skeleton w-[55%] h-6" style={{ opacity: 0.1 }} />
+            </div>
           </div>
-          <div
-            className="flex items-center gap-4 pt-6"
-            style={{ borderTop: '1px solid var(--border-subtle)' }}
-          >
-            <div className="skeleton w-16 h-8 rounded-full" />
-            <div className="skeleton w-14 h-8 rounded-full" />
-            <div className="ml-auto skeleton w-20 h-5 rounded-full" />
-          </div>
+          <div className="skeleton w-12 h-2.5" style={{ opacity: 0.12 }} />
         </div>
       </div>
     </div>
@@ -156,12 +158,14 @@ export default function Feed() {
 
       {/* Progress rail — side dots */}
       {posts.length > 1 && (
-        <div className="progress-rail" aria-hidden="true">
+        <div className="progress-rail">
           {posts.map((_, i) => (
-            <button
+            <div
               key={i}
               className={`progress-dot ${i === activeIndex ? 'active' : ''}`}
               onClick={() => scrollToIndex(i)}
+              role="button"
+              tabIndex={0}
               aria-label={`Go to post ${i + 1}`}
             />
           ))}

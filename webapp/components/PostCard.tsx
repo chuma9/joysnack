@@ -1,120 +1,106 @@
 'use client';
 
-import { useState } from 'react';
 import AgentBadge from './AgentBadge';
+import { AGENT_COLORS } from '@shared/config';
 import type { Post } from '@/lib/supabase';
 
 type PostCardProps = {
   post: Post;
   index: number;
+  isActive?: boolean;
 };
 
-export default function PostCard({ post, index }: PostCardProps) {
-  const [liked, setLiked] = useState(false);
-  const [saved, setSaved] = useState(false);
-
+export default function PostCard({ post, index, isActive = true }: PostCardProps) {
   const isStory = post.content_type === 'story';
+  const theme = AGENT_COLORS[post.content_type] || AGENT_COLORS.motivational;
+
+  const formattedDate = new Date(post.created_at).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+  });
+
+  const relativeTime = getRelativeTime(post.created_at);
 
   return (
     <article
-      className="post-card bg-white rounded-[24px] p-8 shadow-sm hover:shadow-md transition-all duration-500 relative overflow-hidden"
+      className="post-card"
       style={{
-        animationDelay: `${index * 100}ms`,
+        background: theme.gradient,
+        opacity: isActive ? 1 : 0.3,
+        transform: isActive ? 'scale(1)' : 'scale(0.92)',
+        transition: 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
+        border: 'none',
       }}
     >
-      {/* Decorative corner accent */}
+      {/* Subtle inner glow for depth */}
       <div
-        className="absolute top-0 right-0 w-32 h-32 opacity-5 rounded-bl-full"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(135deg, var(--coral) 0%, var(--lavender) 100%)`,
+          background: 'radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.08) 0%, transparent 60%)',
         }}
       />
 
-      {/* Agent Badge */}
-      <div className="mb-6 relative z-10">
-        <AgentBadge name={post.agent_name} contentType={post.content_type} />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10">
-        <div
-          className={`
-            font-['Crimson_Pro']
-            ${isStory ? 'text-lg leading-relaxed' : 'text-2xl leading-snug'}
-            text-[var(--text-primary)]
-            whitespace-pre-wrap
-            text-balance
-          `}
-          style={{
-            fontWeight: isStory ? 400 : 600,
-          }}
-        >
-          {post.content}
+      <div
+        className="relative z-10 flex flex-col"
+        style={{
+          padding: 'clamp(28px, 6vw, 72px)',
+          minHeight: '380px',
+        }}
+      >
+        {/* Agent header — top of card */}
+        <div className="flex items-center" style={{ marginBottom: 'clamp(24px, 4vw, 48px)' }}>
+          <AgentBadge name={post.agent_name} contentType={post.content_type} />
         </div>
-      </div>
 
-      {/* Actions */}
-      <div className="flex items-center gap-6 mt-8 pt-6 border-t border-[var(--peach)] relative z-10">
-        <button
-          onClick={() => setLiked(!liked)}
-          className="group flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--coral)] transition-all duration-300"
-          aria-label={liked ? 'Unlike' : 'Like'}
-        >
-          <span
-            className="text-xl transition-all duration-300 group-hover:scale-110"
+        {/* Content — centered in the card, the star */}
+        <div className="flex-1 flex items-center">
+          <div
+            className={`whitespace-pre-wrap text-balance w-full ${
+              isStory
+                ? 'post-content-story text-[15px]'
+                : 'post-content-prose'
+            }`}
+            style={{ color: '#ffffff' }}
+          >
+            {post.content}
+          </div>
+        </div>
+
+        {/* Timestamp — bottom, quiet */}
+        <div className="flex items-center">
+          <time
+            className="text-[11px] tabular-nums font-medium"
+            dateTime={post.created_at}
+            title={formattedDate}
             style={{
-              filter: liked ? 'none' : 'grayscale(100%)',
-              opacity: liked ? 1 : 0.6,
+              color: 'rgba(255, 255, 255, 0.35)',
+              fontFamily: "'DM Sans', sans-serif",
+              letterSpacing: '0.02em',
             }}
           >
-            {liked ? '❤️' : '🤍'}
-          </span>
-          <span className="font-['DM_Sans']">
-            {liked ? post.likes_count + 1 : post.likes_count}
-          </span>
-        </button>
-
-        <button
-          onClick={() => setSaved(!saved)}
-          className="group flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--moss)] transition-all duration-300"
-          aria-label={saved ? 'Unsave' : 'Save'}
-        >
-          <span
-            className="text-xl transition-all duration-300 group-hover:scale-110"
-            style={{
-              filter: saved ? 'none' : 'grayscale(100%)',
-              opacity: saved ? 1 : 0.6,
-            }}
-          >
-            {saved ? '⭐' : '☆'}
-          </span>
-        </button>
-
-        {/* Timestamp */}
-        <div className="ml-auto text-xs text-[var(--text-secondary)] font-['DM_Sans']">
-          {new Date(post.created_at).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-          })}
+            {relativeTime}
+          </time>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .post-card {
-          animation: fadeInUp 0.6s ease-out both;
-        }
-      `}</style>
     </article>
   );
+}
+
+function getRelativeTime(dateStr: string): string {
+  const now = Date.now();
+  const then = new Date(dateStr).getTime();
+  const diff = now - then;
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  if (hours < 24) return `${hours}h ago`;
+  if (days < 7) return `${days}d ago`;
+
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+  });
 }

@@ -56,10 +56,32 @@ function loadAgent(filename) {
 }
 
 /**
+ * Fetch recent posts by this agent to avoid repetition
+ */
+async function getRecentPosts(agentName, limit = 5) {
+  const { data } = await supabase
+    .from('posts')
+    .select('content')
+    .eq('agent_name', agentName)
+    .order('created_at', { ascending: false })
+    .limit(limit);
+  return data || [];
+}
+
+/**
  * Generate content using Claude API
  */
 async function generateContent(agent) {
   console.log(`\n🎨 Generating content from ${agent.name}...`);
+
+  const recentPosts = await getRecentPosts(agent.name);
+
+  let prompt = 'Generate one piece of wholesome content following your guidelines.';
+
+  if (recentPosts.length > 0) {
+    const recentList = recentPosts.map((p, i) => `${i + 1}. "${p.content.slice(0, 100)}..."`).join('\n');
+    prompt += `\n\nIMPORTANT: Here are your most recent posts. Write something COMPLETELY DIFFERENT in topic, tone, and angle. Do not repeat similar themes or phrasing:\n${recentList}`;
+  }
 
   try {
     const message = await anthropic.messages.create({
@@ -68,7 +90,7 @@ async function generateContent(agent) {
       messages: [
         {
           role: 'user',
-          content: 'Generate one piece of wholesome content following your guidelines.'
+          content: prompt
         }
       ],
       system: agent.systemPrompt
