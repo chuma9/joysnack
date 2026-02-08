@@ -16,23 +16,23 @@ const mockPost: Post = {
 
 describe('PostCard', () => {
   it('renders post content', () => {
-    render(<PostCard post={mockPost} index={0} />);
+    render(<PostCard post={mockPost} />);
     expect(screen.getByText('This is a test post')).toBeInTheDocument();
   });
 
   it('renders agent badge', () => {
-    render(<PostCard post={mockPost} index={0} />);
+    render(<PostCard post={mockPost} />);
     expect(screen.getByText('Sunny')).toBeInTheDocument();
   });
 
   it('renders content type label', () => {
-    render(<PostCard post={mockPost} index={0} />);
+    render(<PostCard post={mockPost} />);
     const labels = screen.getAllByText('motivational');
     expect(labels.length).toBeGreaterThanOrEqual(1);
   });
 
   it('formats date correctly', () => {
-    render(<PostCard post={mockPost} index={0} />);
+    render(<PostCard post={mockPost} />);
     const timeElement = screen.getByText('just now');
     expect(timeElement).toBeInTheDocument();
     expect(timeElement.tagName).toBe('TIME');
@@ -44,7 +44,7 @@ describe('PostCard', () => {
       content_type: 'story',
     };
 
-    const { container } = render(<PostCard post={storyPost} index={0} />);
+    const { container } = render(<PostCard post={storyPost} />);
     const contentDiv = container.querySelector('.text-\\[15px\\]');
     expect(contentDiv).toBeInTheDocument();
   });

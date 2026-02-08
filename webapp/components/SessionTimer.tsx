@@ -327,31 +327,6 @@ export default function SessionTimer() {
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        .session-slider::-webkit-slider-thumb {
-          appearance: none;
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          background: var(--terracotta);
-          cursor: pointer;
-          box-shadow: 0 2px 8px rgba(212, 147, 122, 0.3);
-          transition: transform 0.2s ease;
-        }
-        .session-slider::-webkit-slider-thumb:hover {
-          transform: scale(1.15);
-        }
-        .session-slider::-moz-range-thumb {
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          background: var(--terracotta);
-          cursor: pointer;
-          border: none;
-          box-shadow: 0 2px 8px rgba(212, 147, 122, 0.3);
-        }
-      `}</style>
     </>
   );
 }

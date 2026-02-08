@@ -152,7 +152,7 @@ export default function Feed() {
           data-index={index}
           className="snap-post"
         >
-          <PostCard post={post} index={index} isActive={index === activeIndex} />
+          <PostCard post={post} isActive={index === activeIndex} />
         </div>
       ))}
 
@@ -160,12 +160,10 @@ export default function Feed() {
       {posts.length > 1 && (
         <div className="progress-rail">
           {posts.map((_, i) => (
-            <div
+            <button
               key={i}
               className={`progress-dot ${i === activeIndex ? 'active' : ''}`}
               onClick={() => scrollToIndex(i)}
-              role="button"
-              tabIndex={0}
               aria-label={`Go to post ${i + 1}`}
             />
           ))}

@@ -6,11 +6,10 @@ import type { Post } from '@/lib/supabase';
 
 type PostCardProps = {
   post: Post;
-  index: number;
   isActive?: boolean;
 };
 
-export default function PostCard({ post, index, isActive = true }: PostCardProps) {
+export default function PostCard({ post, isActive = true }: PostCardProps) {
   const isStory = post.content_type === 'story';
   const theme = AGENT_COLORS[post.content_type] || AGENT_COLORS.motivational;
 

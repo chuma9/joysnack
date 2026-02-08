@@ -2,7 +2,6 @@
  * Shared configuration for Joysnack
  */
 
-export const SESSION_LIMIT_MS = 15 * 60 * 1000; // 15 minutes
 
 export const AGENT_COLORS: Record<string, {
   bg: string;
