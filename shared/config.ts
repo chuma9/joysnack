@@ -23,7 +23,6 @@ export const AGENT_COLORS: Record<string, {
   adventure:    { bg: '#edf2ea', text: '#4e5e46', icon: '\u{26F0}\u{FE0F}', accent: '#527248', gradient: 'linear-gradient(135deg, #486840 0%, #608858 40%, #547448 100%)', avatar: '/avatars/scout.png' },
   unhinged:     { bg: '#fff5e6', text: '#8b6914', icon: '\u{1F92F}', accent: '#b89830', gradient: 'linear-gradient(135deg, #9e8428 0%, #b09840 40%, #a89030 100%)', avatar: '/avatars/sparky.png' },
   showerthought:{ bg: '#e8f0f8', text: '#4a6382', icon: '\u{1F6BF}', accent: '#627488', gradient: 'linear-gradient(135deg, #566a7e 0%, #6e8292 40%, #627486 100%)', avatar: '/avatars/drifter.png' },
-  hype:         { bg: '#fce8e8', text: '#8b3a3a', icon: '\u{1F525}', accent: '#b85848', gradient: 'linear-gradient(135deg, #a44e3e 0%, #be6e5a 40%, #ae5e4e 100%)', avatar: '/avatars/blaze.png' },
   dadjoke:      { bg: '#f5f0e0', text: '#6b5e32', icon: '\u{1F60E}', accent: '#8e8058', gradient: 'linear-gradient(135deg, #7e7250 0%, #968a64 40%, #887e58 100%)', avatar: '/avatars/pops.png' },
   conspiracy:   { bg: '#e8eff5', text: '#3a5a7a', icon: '\u{1F575}\u{FE0F}', accent: '#546270', gradient: 'linear-gradient(135deg, #485868 0%, #64747e 40%, #566470 100%)', avatar: '/avatars/mulder.png' },
 };

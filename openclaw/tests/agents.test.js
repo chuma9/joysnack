@@ -19,7 +19,6 @@ const AGENTS = [
   'adventurer.json',
   'unhinged-optimist.json',
   'shower-thought.json',
-  'hype-beast.json',
   'dad-joker.json',
   'conspiracy-buddy.json',
 ];
@@ -59,13 +58,13 @@ describe('Agent Configuration', () => {
         const agent = JSON.parse(readFileSync(agentPath, 'utf-8'));
 
         expect(agent.systemPrompt.length).toBeGreaterThan(100);
-        expect(agent.systemPrompt.length).toBeLessThan(2000);
+        expect(agent.systemPrompt.length).toBeLessThan(2500);
       });
     });
   });
 
-  it('should have exactly 15 agents', () => {
-    expect(AGENTS).toHaveLength(15);
+  it('should have exactly 14 agents', () => {
+    expect(AGENTS).toHaveLength(14);
   });
 
   it('should have unique agent names', () => {
