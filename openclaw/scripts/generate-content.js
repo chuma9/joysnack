@@ -42,7 +42,8 @@ const AGENTS = [
   'unhinged-optimist.json',
   'shower-thought.json',
   'dad-joker.json',
-  'conspiracy-buddy.json'
+  'conspiracy-buddy.json',
+  'hype-beast.json'
 ];
 
 /**
