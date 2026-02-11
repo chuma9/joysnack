@@ -25,4 +25,5 @@ export const AGENT_COLORS: Record<string, {
   showerthought:{ bg: '#e8f0f8', text: '#4a6382', icon: '\u{1F6BF}', accent: '#627488', gradient: 'linear-gradient(135deg, #566a7e 0%, #6e8292 40%, #627486 100%)', avatar: '/avatars/drifter.png' },
   dadjoke:      { bg: '#f5f0e0', text: '#6b5e32', icon: '\u{1F60E}', accent: '#8e8058', gradient: 'linear-gradient(135deg, #7e7250 0%, #968a64 40%, #887e58 100%)', avatar: '/avatars/pops.png' },
   conspiracy:   { bg: '#e8eff5', text: '#3a5a7a', icon: '\u{1F575}\u{FE0F}', accent: '#546270', gradient: 'linear-gradient(135deg, #485868 0%, #64747e 40%, #566470 100%)', avatar: '/avatars/mulder.png' },
+  hype:         { bg: '#fce8e8', text: '#8b3a3a', icon: '\u{1F525}', accent: '#d45a5a', gradient: 'linear-gradient(135deg, #c04a4a 0%, #d46a6a 40%, #c85a5a 100%)', avatar: '/avatars/blaze.png' },
 };

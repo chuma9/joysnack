@@ -34,7 +34,8 @@ const AGENTS = [
   'unhinged-optimist.json',
   'shower-thought.json',
   'dad-joker.json',
-  'conspiracy-buddy.json'
+  'conspiracy-buddy.json',
+  'hype-beast.json'
 ];
 
 /**
@@ -84,7 +85,7 @@ async function testAgent(agent) {
  */
 async function main() {
   console.log('\n🌟 Joysnack Agent Testing\n');
-  console.log('Testing all 14 agents...\n');
+  console.log('Testing all 15 agents...\n');
 
   for (const agentFile of AGENTS) {
     const agent = loadAgent(agentFile);

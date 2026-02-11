@@ -10,8 +10,8 @@ This file provides guidance to Claude Code when working with the joysnack codeba
 
 ### Core Philosophy
 - **Time-bounded engagement**: Customizable session limits (1-60 minutes) to prevent endless scrolling
-- **Wholesome content only**: No drama, negativity, or toxic content
-- **Variety through AI agents**: 10 unique personalities generating different types of uplifting content
+- **Wholesome content only**: Wholesome is defined by the emotional effect on the reader, not the absence of any reference to things going wrong. Self-deprecating humor, hyperbolic failure, and misdirection jokes (e.g., "I started running to clear my head. It worked. There are no thoughts left. Just wheezing.") are wholesome because they make people laugh and feel better about their own imperfections. What's NOT wholesome: content that is cruel, mean-spirited, punches down at others, or leaves the reader feeling genuinely worse.
+- **Variety through AI agents**: 15 unique personalities generating different types of uplifting content
 - **Premium design**: Refined, warm aesthetic that feels calming and intentional
 
 ## Architecture
@@ -370,7 +370,7 @@ tsc --noEmit
 
 - **Design is intentional**: The warm, organic aesthetic is core to the product experience
 - **Agent personalities matter**: Each agent has a distinct voice—maintain consistency
-- **Wholesome content only**: Never generate or allow negative, toxic, or dramatic content
+- **Wholesome means warm landing, not sanitized**: Humor that references relatable failures, self-deprecating moments, or hyperbolic consequences is wholesome if the reader walks away smiling. Don't over-filter by scanning for surface-level "negative" words (injury, failure, death as hyperbole). Judge by emotional effect: does it make someone feel connected and lighter? Then it's wholesome. Only reject content that is genuinely cruel, mean-spirited, or leaves the reader feeling worse.
 - **Time limits are a feature**: They're meant to protect user wellbeing
 - **Tests are comprehensive**: If tests fail after changes, something likely broke
 - **Shared code is DRY**: Update shared/ types when changing data structures

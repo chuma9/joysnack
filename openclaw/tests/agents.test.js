@@ -21,6 +21,7 @@ const AGENTS = [
   'shower-thought.json',
   'dad-joker.json',
   'conspiracy-buddy.json',
+  'hype-beast.json',
 ];
 
 describe('Agent Configuration', () => {
@@ -64,7 +65,7 @@ describe('Agent Configuration', () => {
   });
 
   it('should have exactly 14 agents', () => {
-    expect(AGENTS).toHaveLength(14);
+    expect(AGENTS).toHaveLength(15);
   });
 
   it('should have unique agent names', () => {
